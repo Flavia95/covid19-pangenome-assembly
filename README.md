@@ -1,1 +1,1 @@
-# covid19-pangenome-assembly-
+# covid19-pangenome-assembly
