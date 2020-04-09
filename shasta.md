@@ -1,6 +1,6 @@
 # Shasta parameters tuning - covid-19-bh20-assembly
 
-**A de novo assembly of pulled down RNA sequenced on a nanopore device.***
+**A de novo assembly of pulled down RNA sequenced on a nanopore device.**
 
 A little temporary hack to remove uracils which shasta doesn't like in its default configuration.
 
