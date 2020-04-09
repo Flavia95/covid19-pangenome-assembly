@@ -2,7 +2,7 @@
 
 **A de novo assembly of pulled down RNA sequenced on a nanopore device.***
 
-A little temporary hack to remove uracils which shashta doesn't like in its default configuration.
+A little temporary hack to remove uracils which shasta doesn't like in its default configuration.
 
 <pre>zcat covid_update.fastq.gz | paste - - - - | tr ' ' '_' | tr -d '@' | tr 'U' 'T' | awk 'length($2) > 1500 { print ">"$1; print $2; }' > covid_update.1.5kb.UtoT.fasta</pre>
 
