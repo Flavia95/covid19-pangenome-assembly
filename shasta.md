@@ -64,12 +64,22 @@ shasta-Linux-0.4.0 --input covid_update.1.5kb.UtoT.fasta --Reads.minReadLength 3
 shasta-Linux-0.4.0 --input covid_update.1.5kb.UtoT.fasta --Reads.minReadLength 3460 --MarkerGraph.minCoverage 1 --MarkerGraph.maxCoverage 5000 --MinHash.maxBucketSize 100 --MarkerGraph.lowCoverageThreshold 5 --MarkerGraph.highCoverageThreshold 2560 --MarkerGraph.edgeMarkerSkipThreshold 1000
 shasta-Linux-0.4.0 --input covid_update.1.5kb.UtoT.fasta --Reads.minReadLength 3460 --MarkerGraph.minCoverage 1 --MarkerGraph.maxCoverage 5000 --MinHash.maxBucketSize 100 --MarkerGraph.lowCoverageThreshold 3 --MarkerGraph.highCoverageThreshold 2560 --MarkerGraph.edgeMarkerSkipThreshold 1000
 shasta-Linux-0.4.0 --input covid_update.1.5kb.UtoT.fasta --Reads.minReadLength 3460 --MarkerGraph.minCoverage 1 --MarkerGraph.maxCoverage 5000 --MinHash.maxBucketSize 100 --MarkerGraph.lowCoverageThreshold 2 --MarkerGraph.highCoverageThreshold 2560 --MarkerGraph.edgeMarkerSkipThreshold 1000
+
+shasta-Linux-0.4.0 --input covid_update.1.5kb.UtoT.fasta --Reads.minReadLength 3460 --MarkerGraph.minCoverage 1 --MarkerGraph.maxCoverage 3000 --MinHash.maxBucketSize 80 --MarkerGraph.lowCoverageThreshold 1 --MarkerGraph.highCoverageThreshold 1500 --MarkerGraph.edgeMarkerSkipThreshold 800
+shasta-Linux-0.4.0 --input covid_update.1.5kb.UtoT.fasta --Reads.minReadLength 3460 --MarkerGraph.minCoverage 1 --MarkerGraph.maxCoverage 2500 --MinHash.maxBucketSize 70 --MarkerGraph.lowCoverageThreshold 1 --MarkerGraph.highCoverageThreshold 1200 --MarkerGraph.edgeMarkerSkipThreshold 700
+shasta-Linux-0.4.0 --input covid_update.1.5kb.UtoT.fasta --Reads.minReadLength 3460 --MarkerGraph.minCoverage 1 --MarkerGraph.maxCoverage 1500 --MinHash.maxBucketSize 60 --MarkerGraph.lowCoverageThreshold 1 --MarkerGraph.highCoverageThreshold 800 --MarkerGraph.edgeMarkerSkipThreshold 500
+shasta-Linux-0.4.0 --input covid_update.1.5kb.UtoT.fasta --Reads.minReadLength 3460 --MarkerGraph.minCoverage 1 --MarkerGraph.maxCoverage 500 --MinHash.maxBucketSize 60 --MarkerGraph.lowCoverageThreshold 1 --MarkerGraph.highCoverageThreshold 300 --MarkerGraph.edgeMarkerSkipThreshold 200
+shasta-Linux-0.4.0 --input covid_update.1.5kb.UtoT.fasta --Reads.minReadLength 3460 --MarkerGraph.minCoverage 1 --MarkerGraph.maxCoverage 300 --MinHash.maxBucketSize 60 --MarkerGraph.lowCoverageThreshold 1 --MarkerGraph.highCoverageThreshold 256 --MarkerGraph.edgeMarkerSkipThreshold 150
 </pre>
 
-Briefly, we first progressively decreased the *MarkerGraph.minCoverage* parameter, and the same with the *MarkerGraph.lowCoverageThreshold* parameter. For the last command we got
+Briefly, we first progressively decreased the *MarkerGraph.minCoverage* parameter, and the same with the *MarkerGraph.lowCoverageThreshold* parameter. Then, to reduce the mess at the end of the reference, we decreased the *MarkerGraph.maxCoverage*, *MinHash.maxBucketSize*, *MarkerGraph.highCoverageThreshold*, and *MarkerGraph.edgeMarkerSkipThreshold* parameters. For the last command we got
 
-![](images/05_mapping_contigs_on_reference_lower_thresholds.png)
+![](images/05_mapping_contigs_on_reference_new_thresholds.png)
 
-Still a little hole. To reduce the mess on the right, we decreased the *MarkerGraph.maxCoverage*, *MinHash.maxBucketSize*, *MarkerGraph.highCoverageThreshold*, and *MarkerGraph.edgeMarkerSkipThreshold* parameters.
+Still a little hole, so we thought to map the reads directly on the reference to check if there is something for shasta to assemble in that problematic region.
 
-About the hole, we tried to map the reads directly on the reference to check if there is something for shasta to assemble in that problematic region.
+<pre>
+minimap2 NC_045512.2.fasta covid_update.10kb.UtoT.fast > reads_UtoT_on_ref.paf
+pafCoordsDotPlotly.R -i reads_UtoT_on_ref.paf -o 10knew -s -t -m 10 -q 10 -k 10 -l
+</pre>
+
