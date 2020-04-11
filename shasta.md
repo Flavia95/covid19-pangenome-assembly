@@ -94,7 +94,7 @@ We clearly see that there are no long reads covering that region, so we tried to
 <pre>
 shasta-Linux-0.4.0 --input covid_update.0.5kb.UtoT.fasta --Reads.minReadLength 500 --MarkerGraph.minCoverage 1 --MarkerGraph.maxCoverage 2500 --MinHash.maxBucketSize 70 --MarkerGraph.lowCoverageThreshold 1 --MarkerGraph.highCoverageThreshold 1200 --MarkerGraph.edgeMarkerSkipThreshold 700
 minimap2 NC_045512.2.fasta ShastaRun/Assembly.fasta > Assembly.paf
-pafCoordsDotPlotly.R -i Assembly.paf -o out -s -t -m 10 -q 10 -s -p 15
+pafCoordsDotPlotly.R -i Assembly.paf -o out -s -t -m 10 -q 10 -p 15
 </pre>
 
 ![](images/08_more_reads_for_the_assembler.png)
