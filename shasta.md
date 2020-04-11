@@ -79,8 +79,8 @@ Briefly, we first progressively decreased the *MarkerGraph.minCoverage* paramete
 Still a little hole, so we thought to map the reads (with length > 1.5 kbps) directly on the reference to check if there is something for shasta to assemble in that problematic region.
 
 <pre>
-minimap2 NC_045512.2.fasta covid_update.1.5kb.UtoT.fast > reads_1.5kb_UtoT_on_ref06.paf
-pafCoordsDotPlotly.R -i reads_1.5kb_UtoT_on_ref06.paf -o out -s -t -m 10 -q 10 -k 10 -l
+minimap2 NC_045512.2.fasta covid_update.1.5kb.UtoT.fast > reads_1.5kb_UtoT_on_ref.paf
+pafCoordsDotPlotly.R -i reads_1.5kb_UtoT_on_ref.paf -o out -s -t -m 10 -q 10 -k 10 -l
 </pre>
 
 ![](images/06_reads_1.5kbps_on_ref.png)
