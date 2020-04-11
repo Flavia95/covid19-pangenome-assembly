@@ -76,10 +76,17 @@ Briefly, we first progressively decreased the *MarkerGraph.minCoverage* paramete
 
 ![](images/05_mapping_contigs_on_reference_new_thresholds.png)
 
-Still a little hole, so we thought to map the reads directly on the reference to check if there is something for shasta to assemble in that problematic region.
+Still a little hole, so we thought to map the reads (with length > 1.5 kbps) directly on the reference to check if there is something for shasta to assemble in that problematic region.
 
 <pre>
-minimap2 NC_045512.2.fasta covid_update.10kb.UtoT.fast > reads_UtoT_on_ref.paf
-pafCoordsDotPlotly.R -i reads_UtoT_on_ref.paf -o 10knew -s -t -m 10 -q 10 -k 10 -l
+minimap2 NC_045512.2.fasta covid_update.1.5kb.UtoT.fast > reads_1.5kb_UtoT_on_ref06.paf
+pafCoordsDotPlotly.R -i reads_1.5kb_UtoT_on_ref06.paf -o out -s -t -m 10 -q 10 -k 10 -l
 </pre>
 
+![](images/06_reads_1.5kbps_on_ref.png)
+
+The plot shows the problem with the polyA pulldown technique. If we zoom around the region where we always get the hole
+
+![](images/07_reads_1.5kbps_on_ref_zoom.png)
+
+We clearly see that there are no long reads covering that region.
