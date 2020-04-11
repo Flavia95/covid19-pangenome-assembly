@@ -49,6 +49,6 @@ minimap2 -k7 -w1 --sr --frag=yes -A6 -B2 -O12,32 -E2,1 -r50 -p.5 -N20 -f1000,500
 pafCoordsDotPlotly.R -i Assembly.paf -o out -s -t -m 10 -q 10 -s -p 15
 </pre>
 
-and indeed we still got the hole    #per favore ora fai un altro markdown con tutte le prove di covarage
+and indeed we still got the hole    #per favore ora fai un altro markdown con tutte le prove di coverage e aggiungi anche bandage
 
 ![](images/04_mapping_contigs_on_reference_forced.png)
