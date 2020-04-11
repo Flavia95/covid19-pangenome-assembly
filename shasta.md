@@ -93,10 +93,20 @@ We clearly see that there are no long reads covering that region, so we tried to
 
 <pre>
 shasta-Linux-0.4.0 --input covid_update.0.5kb.UtoT.fasta --Reads.minReadLength 500 --MarkerGraph.minCoverage 1 --MarkerGraph.maxCoverage 2500 --MinHash.maxBucketSize 70 --MarkerGraph.lowCoverageThreshold 1 --MarkerGraph.highCoverageThreshold 1200 --MarkerGraph.edgeMarkerSkipThreshold 700
+</pre>
+
+<pre>
 minimap2 NC_045512.2.fasta ShastaRun/Assembly.fasta > Assembly.paf
 pafCoordsDotPlotly.R -i Assembly.paf -o out -s -t -m 10 -q 10 -p 15
 </pre>
 
 ![](images/08_more_reads_for_the_assembler.png)
+
+<pre>
+minimap2 -k7 -w1 --sr --frag=yes -A6 -B2 -O12,32 -E2,1 -r50 -p.5 -N20 -f1000,5000 -n3 -m0 -s40 -g200 -2K50m --heap-sort=yes --secondary=no NC_045512.2.fasta ShastaRun/Assembly.fasta > Assembly.paf
+pafCoordsDotPlotly.R -i Assembly.paf -o out -s -t -m 10 -q 10 -p 15
+</pre>
+
+![](images/09_more_reads_for_the_assembler_forced.png)
 
 The problem is still there, but now is smaller.
