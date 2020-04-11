@@ -24,4 +24,20 @@ we get a bigger conting (31.5 kbps), but also a little mess.
 
 ![](images/02_change_coverage_parameters_bandage.png)
 
-We still need to tune the pruning step and take conficence of the impact of this parameters tuning.
+The mess is expected: the reason is that there is a very strong bias towards the end of the genome because this sequencing data was obtained from pulldown of polyA that it is at the end of the genome.
+
+We still need to tune the pruning step and take conficence of the impact of this parameters tuning, but first we did an exploratory analysis. We mapped all the contigs on the reference (NC_045512.2) using minimap2 with its default parameters
+
+<pre>
+minimap2 NC_045512.2.fasta ShastaRun/Assembly.fasta > Assembly.paf
+</pre>
+
+and giving the resulting PAF into dotPlotly to check the results
+
+<pre>
+pafCoordsDotPlotly.R -i Assembly.paf -o out -s -t -m 10 -q 10 -s -p 15
+</pre>
+
+![](images/03_mapping_contigs_on_reference.png)
+
+The scenario is similar as that of bandage: two big pieces, a hole in the middle (probably corrisponding to the drop in the sequencing coverage) and the mess due to the protocol bias.
