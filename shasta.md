@@ -41,3 +41,14 @@ pafCoordsDotPlotly.R -i Assembly.paf -o out -s -t -m 10 -q 10 -s -p 15
 ![](images/03_mapping_contigs_on_reference.png)
 
 The scenario is similar as that of bandage: two big pieces, a hole in the middle (probably corrisponding to the drop in the sequencing coverage) and the mess due to the protocol bias.
+
+To confirm that the "hole part" isn't assembled by Shasta, we forced minimap2 to map as many reads as possible
+
+<pre>
+minimap2 -k7 -w1 --sr --frag=yes -A6 -B2 -O12,32 -E2,1 -r50 -p.5 -N20 -f1000,5000 -n3 -m0 -s40 -g200 -2K50m --heap-sort=yes --secondary=no NC_045512.2.fasta ShastaRun/Assembly.fasta > Assembly.paf
+pafCoordsDotPlotly.R -i Assembly.paf -o out -s -t -m 10 -q 10 -s -p 15
+</pre>
+
+and indeed we still got the hole
+
+![](images/04_mapping_contigs_on_reference_forced.png)
