@@ -89,4 +89,14 @@ The plot shows the problem with the polyA pulldown technique. If we zoom around 
 
 ![](images/07_reads_1.5kbps_on_ref_zoom.png)
 
-We clearly see that there are no long reads covering that region.
+We clearly see that there are no long reads covering that region, so we tried to use also shorter reads (at least 500 bp), re-increasing the maximum coverage thresholds to avoid new holes at the end of the reference:
+
+<pre>
+shasta-Linux-0.4.0 --input covid_update.0.5kb.UtoT.fasta --Reads.minReadLength 500 --MarkerGraph.minCoverage 1 --MarkerGraph.maxCoverage 2500 --MinHash.maxBucketSize 70 --MarkerGraph.lowCoverageThreshold 1 --MarkerGraph.highCoverageThreshold 1200 --MarkerGraph.edgeMarkerSkipThreshold 700
+minimap2 NC_045512.2.fasta ShastaRun/Assembly.fasta > Assembly.paf
+pafCoordsDotPlotly.R -i Assembly.paf -o out -s -t -m 10 -q 10 -s -p 15
+</pre>
+
+![](images/08_more_reads_for_the_assembler.png)
+
+The problem is still there, but now is smaller.
