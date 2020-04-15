@@ -113,12 +113,13 @@ The problem is still there, but now is smaller.
 
 With a "hopeless-brute-force" trial exploiting even shorter reads (> 100 bp), trying to control the mess in the high coverage region.
 Looking at the GFA with Bandage, the first two bigger contigs look promising because they have togheter (29.412 bp), more or less, the dimension of the virus genome.
-![]()
+![](images/010_bandage_simil_virus.png)
 
 
-Mapping all the contigs on the reference, we see that there are still two little hole (there is also a zoomed image for that region). 
+Mapping all the contigs on the reference, we see that there are still two little hole.
 
-![]()
+![](images/DotPlotly_Zoom.png)
 
 Looking at the alignment with IGV, at the end of the genome there is a mess, and an putative artifactual deletion probably due to the high coverage bias. Zooming in the "holes-region", there are two holes divided by a little 95bp assembled region.
-![]()
+
+![](images/IGV_Zoom.png)
