@@ -130,3 +130,5 @@ Looking at the alignment with IGV, at the end of the genome there is a mess, and
 Zooming in the "holes-region", there are two holes divided by a little 95bp assembled region.
 
 ![](images/IGV_Zoom.png)
+
+The next step coul be to take these contigs, a handful of full length reads, and build it into a graph.
